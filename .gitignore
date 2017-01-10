@@ -1,0 +1,14 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/compiler.xml
+.idea/copyright/
+.idea/description.html
+.idea/misc.xml
+.idea/modules.xml
+.idea/project-template.xml
+.idea/workspace.xml
+MarsRover.iml
+lib/
+out/
+src/
+test/java/
+test/resources/
