@@ -7,3 +7,6 @@
 .idea/project-template.xml
 .idea/workspace.xml
 MarsRover.iml
+lib/
+out/
+test/resources/
