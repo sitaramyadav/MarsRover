@@ -9,7 +9,7 @@ public class RoverTest {
     @Test
     public void facingDirectionShouldReturnTheDirectionWhichCurrentlyRowerIsFacing() throws Exception {
         Rover rower = new Rover("1 3 N");
-        assertEquals('N',rower.facingDirection());
+        assertEquals('N', rower.facingDirection());
 
     }
 
@@ -17,9 +17,9 @@ public class RoverTest {
     public void shouldReturnEastIfCurrentDirectionIsNorthAndCommandForSpinIsL() throws Exception {
         Rover rower = new Rover("1 3 N");
 
-        assertEquals('N',rower.facingDirection());
+        assertEquals('N', rower.facingDirection());
         rower.rotate('L');
-        assertEquals('E',rower.facingDirection());
+        assertEquals('E', rower.facingDirection());
 
 
     }
@@ -28,9 +28,9 @@ public class RoverTest {
     public void shouldReturnWestIfCurrentDirectionIsNorthAndCommandForSpinIsR() throws Exception {
         Rover rower = new Rover("1 3 N");
 
-        assertEquals('N',rower.facingDirection());
+        assertEquals('N', rower.facingDirection());
         rower.rotate('R');
-        assertEquals('W',rower.facingDirection());
+        assertEquals('W', rower.facingDirection());
 
     }
 
@@ -38,9 +38,9 @@ public class RoverTest {
     public void shouldReturnWestIfCurrentDirectionIsSouthAndCommandForRotateIsL() throws Exception {
         Rover rower = new Rover("1 3 S");
 
-        assertEquals('S',rower.facingDirection());
+        assertEquals('S', rower.facingDirection());
         rower.rotate('L');
-        assertEquals('W',rower.facingDirection());
+        assertEquals('W', rower.facingDirection());
 
 
     }
@@ -49,9 +49,9 @@ public class RoverTest {
     public void shouldReturnEastIfCurrentDirectionIsSouthAndCommandForRotateIsR() throws Exception {
         Rover rower = new Rover("1 3 S");
 
-        assertEquals('S',rower.facingDirection());
+        assertEquals('S', rower.facingDirection());
         rower.rotate('R');
-        assertEquals('E',rower.facingDirection());
+        assertEquals('E', rower.facingDirection());
 
     }
 
@@ -59,9 +59,9 @@ public class RoverTest {
     public void shouldReturnNorthIfCurrentDirectionIsWestAndCommandForRotateIsL() throws Exception {
         Rover rower = new Rover("1 3 W");
 
-        assertEquals('W',rower.facingDirection());
+        assertEquals('W', rower.facingDirection());
         rower.rotate('L');
-        assertEquals('N',rower.facingDirection());
+        assertEquals('N', rower.facingDirection());
 
 
     }
@@ -70,9 +70,9 @@ public class RoverTest {
     public void shouldReturnSouthIfCurrentDirectionIsWestAndCommandForRotateIsR() throws Exception {
         Rover rower = new Rover("1 3 W");
 
-        assertEquals('W',rower.facingDirection());
+        assertEquals('W', rower.facingDirection());
         rower.rotate('R');
-        assertEquals('S',rower.facingDirection());
+        assertEquals('S', rower.facingDirection());
 
     }
 
@@ -80,41 +80,28 @@ public class RoverTest {
     public void shouldReturnSouthIfCurrentDirectionIsEastAndCommandForRotateIsL() throws Exception {
         Rover rower = new Rover("1 3 E");
 
-        assertEquals('E',rower.facingDirection());
+        assertEquals('E', rower.facingDirection());
         rower.rotate('L');
-        assertEquals('S',rower.facingDirection());
+        assertEquals('S', rower.facingDirection());
 
 
     }
 
     @Test
     public void shouldReturnNorthIfCurrentDirectionIsEastAndCommandForRotateIsR() throws Exception {
-
         Rover rower = new Rover("1 3 E");
 
-        assertEquals('E',rower.facingDirection());
+        assertEquals('E', rower.facingDirection());
         rower.rotate('R');
-        assertEquals('N',rower.facingDirection());
-//
-//    }
-//
-//    @Test
-//    public void shouldMoveOneGridInNorthIfDirectionIsNorthAndCommandIsM() throws Exception {
-//        RoverPosition roverPosition = new RoverPosition(1,3,'N');
-//        Rover rover = new Rover("1 3 N");
-//        rover.move("M");
-//
-//        assertEquals("1 2 N", rover.position());
-//
-//    }
-//
-////    @Test
-//    public void moveShouldMoveTheRowerAccordingToInstruction() throws Exception {
-//
-//        RoverPosition "1 3 N" = new RoverPosition(5, 5, 'N');
-//        Rover rower = new Rover("1 3 N");
-//        String expectedResult = "1 3 N";
-//        assertEquals(expectedResult,rower.move("LMLMLMLMM"));
+        assertEquals('N', rower.facingDirection());
+
+    }
+
+    @Test
+    public void shouldMoveOneGridInNorthIfDirectionIsNorthAndCommandIsM() throws Exception {
+        Rover rover = new Rover("1 2 N");
+        assertEquals("1 3 N", rover.move("M"));
+
     }
 
 }
