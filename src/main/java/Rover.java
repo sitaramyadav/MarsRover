@@ -1,76 +1,75 @@
 public class Rover {
-    private int xAxis, yAxis;
-    char direction;
+    private int xAxis;
+    private int yAxis;
+    private String direction;
 
     public Rover(String currentPosition) {
-        this.xAxis = currentPosition.charAt(0);
-        this.yAxis = currentPosition.charAt(2);
-        this.direction = currentPosition.charAt(4);
+        String positions[] = currentPosition.split(" ");
+        this.xAxis = Integer.parseInt(positions[0]);
+        this.yAxis = Integer.parseInt(positions[1]);
+        this.direction = positions[2];
     }
 
 
-    public char facingDirection() {
+    public String facingDirection() {
         return this.direction;
     }
 
-    public char rotate(char command) {
-        if ('N' == this.direction) {
-            if (command == 'L') {
-                setDirection('E');
-            } else if (command == 'R') {
-                setDirection('W');
+    public String rotate(String command) {
+        if (this.direction.equals("N")) {
+            if (command.equals("L")) {
+                setDirection("E");
             }
-        } else if ('S' == this.direction) {
-            if (command == 'R') {
-                setDirection('E');
-            } else if (command == 'L') {
-                setDirection('W');
-            }
+            if (command.equals("R")) {
+                setDirection("W");
 
-        } else if ('W' == this.direction) {
-            if (command == 'L') {
-                setDirection('N');
-            } else if (command == 'R') {
-                setDirection('S');
             }
-        } else if ('E' == this.direction) {
-            if (command == 'L') {
-                setDirection('S');
-            } else if (command == 'R')
-                setDirection('N');
+        } else if (this.direction.equals("S")) {
+            getCommand(command, "R", "E", "L", "W");
+
+        } else if (this.direction.equals("W")) {
+            getCommand(command, "L", "N", "R", "S");
+        } else if (this.direction.equals("E")) {
+            getCommand(command, "L", "S", "R", "N");
         }
         return this.direction;
     }
 
-    private void setDirection(char direction) {
+    private void getCommand(String command, String l, String n, String r, String s) {
+        if (command.equals(l)) {
+            setDirection(n);
+        } else if (command.equals(r)) {
+            setDirection(s);
+        }
+    }
+
+    private void setDirection(String direction) {
         this.direction = direction;
     }
 
     private void move() {
-        if (this.direction == 'N')
+        if (this.direction.equals("N"))
             this.yAxis++;
-        if (this.direction == 'S')
+        if (this.direction.equals("S"))
             this.yAxis--;
-        if (this.direction == 'W')
+        if (this.direction.equals("W"))
             this.xAxis++;
-        if (this.direction == 'E')
+        if (this.direction.equals("E"))
             this.xAxis--;
 
     }
 
 
-    public String move(String instructions) {
-        String[] commands = instructions.split(" ");
-        for (int i = 0; i < commands.length; i++) {
-            if (commands[i].charAt(0) == 'L' || commands[i].charAt(0) == 'R') {
-                System.out.println("inside the direction=="+commands[i].charAt(0)+"____"+instructions);
-                rotate(commands[i].charAt(i));
-            } else
-                if(commands[i].charAt(i)=='M'){
+    public String move(String instructions) { //"LML"
+        for (int i = 0; i < instructions.length(); i++) {
+            if (instructions.charAt(i) == 'L' || instructions.charAt(i) == 'R') {
+                rotate("" + instructions.charAt(i));
+            }
+            if (instructions.charAt(i) == 'M') {
                 move();
             }
 
         }
-        return (char) this.xAxis + " " + (char) this.yAxis + " " + this.direction;
+        return this.xAxis + " " + this.yAxis + " " + this.direction;
     }
 }
