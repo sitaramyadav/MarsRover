@@ -19,47 +19,68 @@ public class RoverTest {
 
         assertEquals("N", rower.facingDirection());
         rower.rotate("L");
-        assertEquals("E", rower.facingDirection());
+        assertEquals("W", rower.facingDirection());
 
 
     }
 
     @Test
-    public void shouldReturnWestIfCurrentDirectionIsNorthAndCommandForSpinIsR() throws Exception {
+    public void shouldReturnEasttIfCurrentDirectionIsNorthAndCommandForRotateIsR() throws Exception {
         Rover rower = new Rover("1 3 N");
 
         assertEquals("N", rower.facingDirection());
         rower.rotate("R");
-        assertEquals("W", rower.facingDirection());
-
-    }
-
-    @Test
-    public void shouldReturnWestIfCurrentDirectionIsSouthAndCommandForRotateIsL() throws Exception {
-        Rover rower = new Rover("1 3 S");
-
-        assertEquals("S", rower.facingDirection());
-        rower.rotate("L");
-        assertEquals("W",(rower.facingDirection()));
-
-
-    }
-
-    @Test
-    public void shouldReturnEastIfCurrentDirectionIsSouthAndCommandForRotateIsR() throws Exception {
-        Rover rower = new Rover("1 3 S");
-
-        assertEquals("S", rower.facingDirection());
-        rower.rotate("R");
         assertEquals("E", rower.facingDirection());
 
     }
 
     @Test
-    public void shouldReturnNorthIfCurrentDirectionIsWestAndCommandForRotateIsL() throws Exception {
+    public void shouldReturnEasttIfCurrentDirectionIsSouthAndCommandForRotateIsL() throws Exception {
+        Rover rower = new Rover("1 3 S");
+
+        assertEquals("S", rower.facingDirection());
+        rower.rotate("L");
+        assertEquals("E",(rower.facingDirection()));
+
+
+    }
+
+    @Test
+    public void shouldReturnWestIfCurrentDirectionIsSouthAndCommandForRotateIsR() throws Exception {
+        Rover rower = new Rover("1 3 S");
+
+        assertEquals("S", rower.facingDirection());
+        rower.rotate("R");
+        assertEquals("W", rower.facingDirection());
+
+    }
+
+    @Test
+    public void shouldReturnSouthIfCurrentDirectionIsWestAndCommandForRotateIsL() throws Exception {
         Rover rower = new Rover("1 3 W");
 
         assertEquals("W", rower.facingDirection());
+        rower.rotate("L");
+        assertEquals("S", rower.facingDirection());
+
+
+    }
+
+    @Test
+    public void shouldReturnNorthIfCurrentDirectionIsWestAndCommandForRotateIsR() throws Exception {
+        Rover rower = new Rover("1 3 W");
+
+        assertEquals("W", rower.facingDirection());
+        rower.rotate("R");
+        assertEquals("N", rower.facingDirection());
+
+    }
+
+    @Test
+    public void shouldReturnEastIfCurrentDirectionIsEastAndCommandForRotateIsL() throws Exception {
+        Rover rower = new Rover("1 3 E");
+
+        assertEquals("E", rower.facingDirection());
         rower.rotate("L");
         assertEquals("N", rower.facingDirection());
 
@@ -67,33 +88,12 @@ public class RoverTest {
     }
 
     @Test
-    public void shouldReturnSouthIfCurrentDirectionIsWestAndCommandForRotateIsR() throws Exception {
-        Rover rower = new Rover("1 3 W");
-
-        assertEquals("W", rower.facingDirection());
-        rower.rotate("R");
-        assertEquals("S", rower.facingDirection());
-
-    }
-
-    @Test
-    public void shouldReturnSouthIfCurrentDirectionIsEastAndCommandForRotateIsL() throws Exception {
-        Rover rower = new Rover("1 3 E");
-
-        assertEquals("E", rower.facingDirection());
-        rower.rotate("L");
-        assertEquals("S", rower.facingDirection());
-
-
-    }
-
-    @Test
-    public void shouldReturnNorthIfCurrentDirectionIsEastAndCommandForRotateIsR() throws Exception {
+    public void shouldReturnSouthIfCurrentDirectionIsEastAndCommandForRotateIsR() throws Exception {
         Rover rower = new Rover("1 3 E");
 
         assertEquals("E", rower.facingDirection());
         rower.rotate("R");
-        assertEquals("N", rower.facingDirection());
+        assertEquals("S", rower.facingDirection());
 
     }
 
@@ -108,8 +108,8 @@ public class RoverTest {
     public void moveShouldShouldMoveOnOneTwoEIfInstructionIsLM() throws Exception {
 
         Rover rower = new Rover("1 2 N");
-        String expectedResult = "1 2 E";
-        String actualResult = rower.move("L");
+        String expectedResult = "0 2 W";
+        String actualResult = rower.move("LM");
 
         assertEquals(expectedResult, actualResult);
     }

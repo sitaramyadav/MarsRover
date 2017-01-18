@@ -18,29 +18,33 @@ public class Rover {
     public String rotate(String command) {
         if (this.direction.equals("N")) {
             if (command.equals("L")) {
-                setDirection("E");
+                setDirection("W");
             }
             if (command.equals("R")) {
-                setDirection("W");
+                setDirection("E");
 
             }
         } else if (this.direction.equals("S")) {
-            getCommand(command, "R", "E", "L", "W");
+            if(command.equals("L")){
+                setDirection("E");
+            } else if(command.equals("R")){
+                setDirection("W");
+            }
 
         } else if (this.direction.equals("W")) {
-            getCommand(command, "L", "N", "R", "S");
+            if(command.equals("L")){
+                setDirection("S");
+            } else if(command.equals("R")){
+                setDirection("N");
+            }
         } else if (this.direction.equals("E")) {
-            getCommand(command, "L", "S", "R", "N");
+            if(command.equals("L")){
+                setDirection("N");
+            } else if(command.equals("R")){
+                setDirection("S");
+            }
         }
         return this.direction;
-    }
-
-    private void getCommand(String command, String l, String n, String r, String s) {
-        if (command.equals(l)) {
-            setDirection(n);
-        } else if (command.equals(r)) {
-            setDirection(s);
-        }
     }
 
     private void setDirection(String direction) {
@@ -53,9 +57,9 @@ public class Rover {
         if (this.direction.equals("S"))
             this.yAxis--;
         if (this.direction.equals("W"))
-            this.xAxis++;
-        if (this.direction.equals("E"))
             this.xAxis--;
+        if (this.direction.equals("E"))
+            this.xAxis++;
 
     }
 
